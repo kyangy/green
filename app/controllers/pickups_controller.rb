@@ -1,5 +1,9 @@
 class PickupsController < ApplicationController
 
+	def index
+		@pickups = Pickup.all
+	end
+
 	def create
 		@pickup = current_user.pickups.build(pickup_params)
 		if @pickup.save

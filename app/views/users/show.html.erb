@@ -1,3 +1,8 @@
+<h4>Currently Scheduled Pickup:</h4> 
+<% current_user.pickups.where(completed: false).each do | f | %>
+	<%= f.date.strftime("%m/%d/%Y") %>
+<% end %>
+
 <%= form_for @pickup do |f| %>
 
 	<%= f.label :date %>

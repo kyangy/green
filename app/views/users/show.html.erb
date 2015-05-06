@@ -1,0 +1,15 @@
+<%= form_for @pickup do |f| %>
+
+	<%= f.label :date %>
+	<%= f.text_field :date, id: "datepicker" %>
+	<%= f.submit "Schedule!" %>
+
+<% end %>
+
+<script>
+
+	$(document).ready(function(){
+		$( "#datepicker" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
+	});
+
+</script>	

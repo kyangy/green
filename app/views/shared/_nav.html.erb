@@ -11,13 +11,28 @@
 
 <% end %>
 
-<% if logged_in? == true %>
+<% if logged_in? == true && current_user.admin == false%>
 
 <header class="nav-bar mainmenu">
     <div id='cssmenu'>
         <ul class="text-right">
            <li class="active"><%= link_to "Home", root_path %></li>
-           <li><%= link_to "Pick Up", user_path(current_user.id) %></li>
+           <li><%= link_to "Me", user_path(current_user.id) %></li>
+           <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        </ul>
+    </div>
+</header>
+
+<% end %>
+
+
+<% if logged_in? == true && current_user.admin == true %>
+
+<header class="nav-bar mainmenu">
+    <div id='cssmenu'>
+        <ul class="text-right">
+           <li class="active"><%= link_to "Home", root_path %></li>
+           <li><%= link_to "Pick Ups", pickups_path %></li>
            <li><%= link_to "Log out", logout_path, method: :delete %></li>
         </ul>
     </div>

@@ -1,5 +1,13 @@
-<% @pickups.each do |pickup| %>
+<%= render 'shared/nav' %>
 
-	<p><%= pickup.user.first %></p>
+<section>
+	<div class="container-fluid">
+		<div class="row">
+			<% @pickups.each do |pickup| %>
 
-<% end %>
+				<p><%= pickup.user.first %></p>
+
+			<% end %>
+		</div>
+	</div>
+</section>

@@ -1,7 +1,7 @@
 class PickupsController < ApplicationController
 
 	def index
-		@pickups = Pickup.all
+		@pickups = Pickup.where(completed: false)
 	end
 
 	def create

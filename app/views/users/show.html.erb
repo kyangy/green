@@ -23,7 +23,7 @@
 				<% end %>
 
 					<a href="#hello" class="btn btn-circle page-scroll">
-					    <i class="fa fa-arrow-down animated"></i>
+					    <i class="fa fa-arrow-down animated"> Go to my Account</i>
 					</a>
 			</div>
 			<!-- schedule pick up -->
@@ -59,7 +59,7 @@
 		var divs = $('.first');
 		$(window).on('scroll', function() {
 		   var st = $(this).scrollTop();
-		   divs.css({ 'opacity' : (1 - st/200) });
+		   divs.css({ 'opacity' : (1 - st/500) });
 		});
 
 		$('a.page-scroll').bind('click', function(event) {

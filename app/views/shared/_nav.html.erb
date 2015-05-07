@@ -3,8 +3,7 @@
 <header class="nav-bar mainmenu">
     <div id='cssmenu'>
         <ul class="text-right">
-           <li class="active"><a href='#discover' class="la">Discover</a></li>
-           <li><%= link_to "Home", root_path %></li>
+           <li class="active"><%= link_to "Home", root_path %></li>
            <li><%= link_to "Sign Up", signup_path %></li>
            <li><%= link_to "Log In", login_path %></li>
         </ul>
@@ -20,7 +19,7 @@
         <ul class="text-right">
            <li class="active"><%= link_to "Home", root_path %></li>
            <li><%= link_to "Pick Up", user_path(current_user.id) %></li>
-           <li><%= link_to "Log out", login_path %></li>
+           <li><%= link_to "Log out", logout_path, method: :delete %></li>
         </ul>
     </div>
 </header>

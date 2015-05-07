@@ -39,6 +39,9 @@
 		<div class="container-fluid">
 			<div class="row hello text-center">
 				<h2>Your Account</h2> 
+				<p>Balance: 
+				<%= number_to_currency(current_user.balance) %>
+				</p>
 				<p><%= current_user.first %> <%= current_user.last %></p>
 				<p><%= current_user.email %></p>
 				<% current_user.pickups.where(completed: false).each do | f | %>

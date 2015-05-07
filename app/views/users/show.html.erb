@@ -1,7 +1,7 @@
 <%= render 'shared/nav' %>
-<section >
+<section id="pickup-page">
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row first">
 			<div class="col-md-offset-1 col-md-5 animated fadeInLeft">
 				<h1>Schedule a Pick Up!</h1>
 				<h5>Address: <span class="address"><%= current_user.address %></span></h5>
@@ -21,28 +21,56 @@
 					</div>
 
 				<% end %>
+
+					<a href="#hello" class="btn btn-circle page-scroll">
+					    <i class="fa fa-arrow-down animated"></i>
+					</a>
 			</div>
 			<!-- schedule pick up -->
 
-			<div class="row">
-				<div class="col-md-6 animated fadeIn">
-					<iframe width="600" height="450" frameborder="0" style="border:0" src="<%= @map %>"></iframe>
-				</div>
+			<div class="col-md-6 animated fadeInRight">
+				<iframe width="550" height="400" frameborder="0" style="border:0" src="<%= @map %>"></iframe>
 			</div>
+		
 		</div>
 	</div>
 
+	<section id="hello">
+		<div class="container-fluid">
+			<div class="row hello text-center">
+				<h2>Your Account</h2> 
+				<p><%= current_user.first %> <%= current_user.last %></p>
+				<p><%= current_user.email %></p>
+				<% current_user.pickups.where(completed: false).each do | f | %>
+					<%= f.date.strftime("%m/%d/%Y") %>
+				<% end %> 
+			</div>
+		</div>
+	</section>
+
 </section>
-<!-- 
-<h4>Pending Pick Up</h4> 
-<% current_user.pickups.where(completed: false).each do | f | %>
-	<%= f.date.strftime("%m/%d/%Y") %>
-<% end %> -->
+
 
 <script>
 
 	$(document).ready(function(){
 		$( "#datepicker" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
+
+		var divs = $('.first');
+		$(window).on('scroll', function() {
+		   var st = $(this).scrollTop();
+		   divs.css({ 'opacity' : (1 - st/200) });
+		});
+
+		$('a.page-scroll').bind('click', function(event) {
+		    var $anchor = $(this);
+		    $('html, body').stop().animate({
+		        scrollTop: $($anchor.attr('href')).offset().top
+		    }, 1500, 'easeInOutExpo');
+		    event.preventDefault();
+		    $('.hello').css("visibility","visible").hide().fadeIn(1000);
+		});
+
 	});
 
 </script>	
